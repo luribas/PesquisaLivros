@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Home Page - Livros</title>
+</head>
+ <style>
+h1 {
+        color: #191970;
+        font-size: 18px;
+}
+h2 {
+		color: #191970;
+		font-size: 16px
+}
+p {
+        color: #363636;
+        font-size: 12px;
+}
+button {
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  class:btn-btn-primary;
+}
+
+button:hover {
+  background-color: #4B0082;
+  color: white;
+  class:btn-btn-outline-primary;
+}
+
+body{
+	font-family: Helvetica;
+}
+</style>
+
+<body bgcolor="#E6E6FA">
+	<h1>Seja bem vind_!</h1>
+	
+	<h2>O que gostaria de fazer?</h2>
+	
+	<form>
+		<h:panelGrid columns="2">
+									
+					<h:commandButton onClick="window.location='CadastroCliente.xhtml'" value="Cadastrar Cliente" ></h:commandButton>
+					<h:commandButton href="Login.xhtml" value="Login" ></h:commandButton>
+			<!--  AAAAAAA
+			ARRUMAR OS BOTOES TUDO URGENTE -->		
+			
+			</h:panelGrid>
+
+	
+	
+	</form>
+
+</body>
+</html>

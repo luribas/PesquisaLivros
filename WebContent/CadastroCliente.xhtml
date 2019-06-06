@@ -2,12 +2,62 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core>
+xmlns:f="http://java.sun.com/jsf/core">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Insert title here</title>
 </head>
-<body>
+	<h:body bgcolor="#E6E6FA">
+		<h2>Cadastrar cliente:</h2>
+	
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Nome: "/>
+					<h:inputText value="#{clienteController.cliente.nome}"/>
+					<h:outputLabel value="Login: "/>
+					<h:inputText value="#{clienteController.cliente.login}"/>
+					<h:outputLabel value="Senha: "/>
+					<h:inputSecret value="#{clienteController.cliente.senha}"/>
+					
+					<h:commandButton value="Salvar" action="#{clienteController.salvar}"></h:commandButton>
+			
+				</h:panelGrid>
+			
+				
+			<h:dataTable value="#{clienteController.listaClientes}" var="c" border="2"
+								rendered="#{not empty clienteController.listaClientes}">
+			<h:column >
+				<f:facet name="header">
+					<h:outputText value="Nome"></h:outputText>
+				</f:facet>
+				<h:outputLabel value="#{c.nome}"></h:outputLabel>
+				</h:column>
+				
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Alterar" />
+				</f:facet>
+				<h:commandLink value="#{c.login}"
+						action="#{clienteController.editar}">
+					<f:param name="codigo" value="#{c.codigo}" />
+				</h:commandLink>
 
-</body>
+			</h:column>
+			
+				<h:column>
+				<f:facet name="header">
+					<h:outputText value="Excluir " />
+				</f:facet>
+				<h:commandLink value="excluir" 
+						action="#{clienteController.excluir}">
+					<f:param name="codigo" value="#{c.codigo }" />
+				</h:commandLink>
+				
+			</h:column>	
+				
+				
+				</h:dataTable>
+			</h:form>
+		
+	</h:body>
 </html>
