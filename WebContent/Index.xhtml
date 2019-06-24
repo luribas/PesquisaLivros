@@ -7,28 +7,23 @@
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Flourish and Blotts Home Page</title>
-<link rel="shortcut icon" type="image/x-icon" href="/arquivos/feather_icon.png"/>
+<link rel="shortcut icon" type="image/x-icon" href="/images/feather_icon.png"/>
 </h:head>
 <h:body>
 	<h:form>
-		<p:layout fullpage="true">
-			<!--
-			<p:layoutUnit position="north" size="150" maxSize="300" changeable="true" style="text-align:center;">
-				<h1>Flourish and Blotts</h1>
-			</p:layoutUnit>
-			-->
-			
-			<!-- NORTH  copiado do primefaces para teste-->
-			 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-      			  <h:outputText value="North unit content." />
+		<p:layout style="min-width:1000px; min-height:600px;" fullpage="true">
+
+			<!-- NORTH  -->
+			 <p:layoutUnit position="north" size="150" resizable="true" closable="true" collapsible="true">
+      			  	<img src="WebContent/images/logo.png" positon="right" alt="FLOURISH AND BLOTTS"></img> 
     		</p:layoutUnit>
 			
 			<!-- WEST -->
-			<p:layoutUnit position="west" header="Menu" size="200" resizable="true" style="text-align:center;">
+			<p:layoutUnit position="west" header="Menu" size="500" resizable="true" style="text-align:center;">
 				<p:tieredMenu style="width:200px">
 			        <p:submenu label="Cliente" icon="pi pi-user">
 			            <p:menuitem value="Logar" action="Login.xhtml" icon="pi pi-sign-in" />
-			            <p:menuitem value="Cadastrar" action="CadatroCliente.xhtml" icon="pi pi-user-plus" />
+			            <p:menuitem value="Cadastrar" action="CadastroCliente.xhtml" icon="pi pi-user-plus" />
 			        </p:submenu>
 			        <p:submenu label="Livro" icon="pi pi-bookmark">
 			            <p:menuitem value="Buscar" action="BuscaLivro.xhtml" update="messages" ajax="false" icon="pi pi-search" />
@@ -36,14 +31,15 @@
 			    </p:tieredMenu>
 			</p:layoutUnit>
 			
-			<!-- EAST -->
-			<p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true" effect="drop">
-				<h:outputText value="Right unit content." />
+			<!-- EAST/CENTER -->
+			<p:layoutUnit position="center" size="200" header="Right" resizable="true" closable="true" collapsible="true" effect="drop">
+				<h:outputText value="adicionar contúdo" />
 			</p:layoutUnit>
 			
 			<!-- SOUTH -->
-			<p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">
-				<h:outputText value="South unit content." />
+			<p:layoutUnit position="south" size="100" resizable="true" closable="true" collapsible="true">
+
+				<h:outputText font-size="14px" value="where the shelves are stacked to the ceiling with books as large as paving stones bound in leather" />
 			 </p:layoutUnit>
 		
 		
