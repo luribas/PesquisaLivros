@@ -8,10 +8,11 @@ import br.edu.ctup.bean.Cliente;
 
 public interface ClienteDAO {
 
-	void cadastrarCliente(Cliente cliente);
+	void salvar(Cliente cliente);
 	void excluir(Integer codigo);
+	Cliente editar(Integer codigo);
 	List<Cliente> listarTodos();
-	List <Cliente> buscarPorNomeCliente (String nome);
+	Cliente buscarPorNomeCliente (String nome);
 	Cliente autenticar(String login, String senha);
 	
 }

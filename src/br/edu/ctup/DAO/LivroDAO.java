@@ -11,5 +11,8 @@ public interface LivroDAO {
 	List<Livro> listarTodosLivros();
 	List <Livro> buscarPorNomelivro(String nome); // permitir a busca pelo nome completo ou parte do nome
 	List <Livro> buscarPorCodigolivro(Integer codigo);
+	List <Livro> buscarPorAutorlivro(String autor);
 	void excluir(Integer codigo);
+	Livro editar (Integer codigo);
+	
 }
