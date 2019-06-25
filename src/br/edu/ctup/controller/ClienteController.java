@@ -18,6 +18,10 @@ public class ClienteController {
 		cliente = new Cliente();
 	}
 	
+	public ClienteController(String nome, String rg, String cpf, String login, String senha) {
+		cliente = new Cliente();
+	}
+		
 	public void salvar() throws IOException {
 		clienteDAOImpl.salvar(cliente);
 		cliente = new Cliente();
