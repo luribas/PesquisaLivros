@@ -52,7 +52,8 @@
 					    <p:menuitem value="Clientes" url="#" />
 					    <p:menuitem value="Cadastre-se" url="#" />
 					</p:breadCrumb>
-					<p:panelGrid style="margin-top:50px; margin-left:200px;">
+					
+					<h:panelGrid style="margin-top:50px; margin-left:200px;">
 						<p:outputLabel value="Nome: " />
 						<p:inputText value="#{clienteController.cliente.nome}"/>
 						<p:outputLabel value="Login: " />
@@ -63,13 +64,9 @@
 						<p:inputText value="#{clienteController.cliente.rg}" />
 						<p:outputLabel value="CPF: " />
 						<p:inputText value="#{clienteController.cliente.cpf}" />
-						<h:commandLink value="Salvar" action="#{clienteController.salvar}"/>
-						</h:commandLink>
-						
-						
-						<!-- <p:commandButton value="Salvar" action="#{clienteController.}" /> -->
-					</p:panelGrid>
-					
+						<p:commandButton value="Salvar" action="#{clienteController.salvar}"/>
+					</h:panelGrid>
+											
 					<!--  Lista de cadastrados -->
 					<h4><b>Clientes Cadastrados</b></h4>
 					<h:dataTable value="#{clienteController.listaClientes}" var="c" border="3" rendered="#{not empty clienteController.listaClientes}">
@@ -97,8 +94,7 @@
 							<f:facet name="header">
 								<h:outputText value="Excluir"></h:outputText>
 							</f:facet>
-							<h:commandLink value="X"
-								action="#{clienteController.excluir}">
+							<h:commandLink value="X" action="#{clienteController.excluir}">
 								<f:param name="id" value="#{c.codigo}"></f:param>
 							</h:commandLink>
 						</h:column>
@@ -109,9 +105,6 @@
 				<p:layoutUnit position="south" size="100" resizable="true" collapsible="true"  style="text-align:center" >
 					<h5> <i>"where the shelves are stacked to the ceiling with books as large as paving stones bound in leather"</i> </h5>
 				 </p:layoutUnit>
-		
-				
-				
 			</p:layout>
 		</h:form>
 	</h:body>
