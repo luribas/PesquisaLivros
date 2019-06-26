@@ -5,10 +5,11 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Cadastro</title>
-<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/feather_icon.jpg"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cadastro</title>
+	<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/feather_icon.jpg"/>
 </h:head>
+
 <f:view>
 	<h:body>
 		<h:form>
@@ -46,20 +47,28 @@
 				
 				<!-- Cadastro -->
 				<p:layoutUnit position="center" size="200" resizable="true" closable="true" collapsible="true" effect="drop">
-			    	<p:breadCrumb>
+					<p:breadCrumb>
 					    <p:menuitem value="Categories" url="Index.xhtml" />
-					    <p:menuitem value="Cliente" url="#" />
-					    <p:menuitem value="Cadastrar" url="#" />
+					    <p:menuitem value="Clientes" url="#" />
+					    <p:menuitem value="Cadastre-se" url="#" />
 					</p:breadCrumb>
-					<h:panelGrid style="margin-top:50px; margin-left:200px;">
+					<p:panelGrid style="margin-top:50px; margin-left:200px;">
 						<p:outputLabel value="Nome: " />
 						<p:inputText value="#{clienteController.cliente.nome}"/>
 						<p:outputLabel value="Login: " />
 						<p:inputText value="#{clienteController.cliente.login}"/>
 						<p:outputLabel value="Senha: " />
 						<p:password value="#{clienteController.cliente.senha}" />
-						<p:commandButton value="Salvar" action="#{clienteController.salvar}"/>
-					</h:panelGrid>
+						<p:outputLabel value="RG: " />
+						<p:inputText value="#{clienteController.cliente.rg}" />
+						<p:outputLabel value="CPF: " />
+						<p:inputText value="#{clienteController.cliente.cpf}" />
+						<h:commandLink value="Salvar" action="#{clienteController.salvar}"/>
+						</h:commandLink>
+						
+						
+						<!-- <p:commandButton value="Salvar" action="#{clienteController.}" /> -->
+					</p:panelGrid>
 					
 					<!--  Lista de cadastrados -->
 					<h4><b>Clientes Cadastrados</b></h4>
@@ -80,9 +89,8 @@
 							<f:facet name="header">
 								<h:outputText value="Alterar"></h:outputText>
 							</f:facet>
-							<h:commandLink value="#{c.nome}"
-								action="#{clienteController.editar}">
-								<f:param name="id" value="#{c.id}"></f:param>
+							<h:commandLink value="#{c.nome}" action="#{clienteController.editar}">
+								<f:param name="id" value="#{c.codigo}"></f:param>
 							</h:commandLink>
 						</h:column>
 						<h:column>
@@ -91,7 +99,7 @@
 							</f:facet>
 							<h:commandLink value="X"
 								action="#{clienteController.excluir}">
-								<f:param name="id" value="#{c.id}"></f:param>
+								<f:param name="id" value="#{c.codigo}"></f:param>
 							</h:commandLink>
 						</h:column>
 					</h:dataTable>

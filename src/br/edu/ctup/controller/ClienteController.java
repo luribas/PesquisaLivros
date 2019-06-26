@@ -21,13 +21,15 @@ public class ClienteController {
 	public ClienteController(String nome, String rg, String cpf, String login, String senha) {
 		cliente = new Cliente();
 	}
-		
+	
+//	Salvar
+	
 	public void salvar() throws IOException {
 		clienteDAOImpl.salvar(cliente);
 		cliente = new Cliente();
-		FacesContext.getCurrentInstance().getExternalContext().redirect("Sucesso.xhtml");
+		FacesContext.getCurrentInstance().getExternalContext().redirect("Login.xhtml");
 	}
-	
+		
 	public void listarTodos() {
 		ClienteDAOImpl clienteDAOimpl = new ClienteDAOImpl();
 		listaClientes = clienteDAOimpl.listarTodos();
@@ -39,15 +41,21 @@ public class ClienteController {
 		return cliente;
 	}
 	
-		public void setCliente(Cliente cliente) {
+	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 	
+	public ClienteDAOImpl getClienteDAOImpl() {
+			return clienteDAOImpl;
+		}
+
+	public void setClienteDAOImpl(ClienteDAOImpl clienteDAOImpl) {
+		this.clienteDAOImpl = clienteDAOImpl;
+		}
+
 	public List<Cliente> getListaClientes() {
-		ClienteDAOImpl clienteDAOimpl = new ClienteDAOImpl();
-		List<Cliente> clientes = clienteDAOimpl.listarTodos();
-		return clienteDAOimpl.listarTodos();
-	}
+		return listaClientes;
+		}
 
 	public void setListaClientes(List<Cliente> listaClientes) {
 		this.listaClientes = listaClientes;

@@ -10,8 +10,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/feather_icon.jpg"/>
 </h:head>
 
-<f:view>
-	<h:body>
+<h:body>
 		<h:form>
 			<p:layout style="min-width:200px; min-height:1000px;">
 			
@@ -51,7 +50,7 @@
 					    <p:menuitem value="Clientes" url="#" />
 					    <p:menuitem value="Login" url="#" />
 					</p:breadCrumb>
-			        <h:panelGrid style="margin-top:50px;margin-left:200px;">
+			        <p:panelGrid style="margin-top:50px;margin-left:200px;">
 						<p:outputLabel value="Login: "/>
 						<p:inputText value="#{clienteController.cliente.login}" />
 						
@@ -59,7 +58,7 @@
 						<p:password value="#{clienteController.cliente.senha}" />
 						
 						<p:button value="Entrar" action="#{clienteController.autenticarCliente}"/>
-					</h:panelGrid>
+					</p:panelGrid>
 			    </p:layoutUnit>
 			    
 			    <!-- SOUTH -->
@@ -72,5 +71,5 @@
 			</p:layout>
 		</h:form>
 	</h:body>
-</f:view>
+
 </html>

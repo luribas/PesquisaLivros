@@ -4,11 +4,39 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<head>
+<h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<body>
+<title>Erro 934</title>
+</h:head>
+<h:body>
 
-</body>
+	<h:form>
+		<p:layout style="min-width:200px; min-height:1000px;">
+			
+			<!-- WEST -->
+			<p:layoutUnit position="west" header="Menu" size="250" resizable="true" style="text-align:center;">
+						<p:slideMenu style="width:200px; height:300px">
+					        <p:submenu label="Cliente" icon="pi pi-user">
+					            <p:menuitem value="Logar" action="Login.xhtml" icon="pi pi-sign-in" />
+					            <p:menuitem value="Cadastrar" action="CadastroCliente.xhtml" icon="pi pi-user-plus" />
+					        </p:submenu>
+					        <p:submenu label="Livro" icon="pi pi-bookmark">
+					            <p:menuitem value="Buscar" action="BuscaLivro.xhtml" update="messages" ajax="false" icon="pi pi-search" />
+					        </p:submenu>
+						</p:slideMenu>
+			</p:layoutUnit>
+			
+			<!-- CENTER -->
+			<p:layoutUnit position="center" size="200" resizable="true" closable="true" collapsible="true" effect="drop" style="min-width:200px; min-height:1000px;">
+			
+				<h3>OOPS, DEU ERRADO</h3>
+				
+				<img src="#{request.contextPath}/images/dracofb.gif" height="300"></img>
+			
+			</p:layoutUnit>
+		
+		</p:layout>
+	</h:form>
+
+</h:body>
 </html>

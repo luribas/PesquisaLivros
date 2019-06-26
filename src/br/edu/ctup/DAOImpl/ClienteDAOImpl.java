@@ -16,26 +16,12 @@ public class ClienteDAOImpl extends DAO implements ClienteDAO {
 	
 	@Override
 	public void salvar(Cliente cliente) {
-		em = getEntityManager();
-		try { 									// tratamento de erro
-				if(cliente.getCodigo() == null) {
-					em.getTransaction().begin(); // abre conexao 
-					em.persist(cliente);
-					em.getTransaction().commit();	
-				} else {
-					em.getTransaction().begin();
-					em.merge(cliente);
-					em.getTransaction().commit();
-				}
-		} catch(Exception e) {
-			e.getStackTrace();
-			em.getTransaction().rollback();
-		} finally {
-			em.close();
+		em.getTransaction().begin(); // abre a conexão
+		em.persist(cliente);
+		em.getTransaction().commit();
+				
 		}
 		
-	}
-
 	@Override
 	public void excluir(Integer codigo) {
 		em = getEntityManager();
