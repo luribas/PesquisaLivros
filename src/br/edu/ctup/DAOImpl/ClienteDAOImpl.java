@@ -11,7 +11,7 @@ import br.edu.ctup.bean.Cliente;
 
 public class ClienteDAOImpl extends DAO implements ClienteDAO {
 	
-	private Cliente cliente = new Cliente();
+	Cliente cliente = new Cliente();
 	EntityManager em = getEntityManager();
 	
 	@Override

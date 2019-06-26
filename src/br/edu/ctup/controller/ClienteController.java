@@ -10,7 +10,7 @@ import br.edu.ctup.bean.Cliente;
 
 public class ClienteController {
 
-	private Cliente cliente = new Cliente();
+	public Cliente cliente = new Cliente();
 	private List<Cliente> listaClientes;
 	private ClienteDAOImpl clienteDAOImpl = new ClienteDAOImpl();
 	

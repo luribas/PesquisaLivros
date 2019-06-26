@@ -13,6 +13,22 @@
 	<h:form>
 		<p:layout style="min-width:200px; min-height:1000px;">
 			
+			<!-- NORTH -->
+			<p:layoutUnit position="north" size="150" resizable="true" closable="true" collapsible="true">
+	       			<p:panelGrid columns="3" layout="grid">
+	      			  
+	      			  	<p:column>
+	      			  		<a href="Index.xhtml"><img src="#{request.contextPath}/images/logo.png" class="alignleft" height="150" alt="FLOURISH AND BLOTTS"></img></a>
+	      			  	</p:column>
+	      			  	<p:column >
+	      			  		<h1 style="text-align:center;">FLOURISH AND BLOTTS</h1> 
+	      			  	</p:column>
+	      			  	<p:column>
+	      			  		<a href="Index.xhtml"><img src="#{request.contextPath}/images/logo.png" class="alignleft" height="150" alt="FLOURISH AND BLOTTS"></img></a>
+	      			  	</p:column>
+	      			 </p:panelGrid>
+    			</p:layoutUnit>
+    			
 			<!-- WEST -->
 			<p:layoutUnit position="west" header="Menu" size="250" resizable="true" style="text-align:center;">
 						<p:slideMenu style="width:200px; height:300px">

@@ -19,13 +19,13 @@
 	       			<p:panelGrid columns="3" layout="grid">
 	      			  
 	      			  	<p:column>
-	      			  		<img src="#{request.contextPath}/images/logo.png" class="alignleft" height="150" alt="FLOURISH AND BLOTTS"></img>
+	      			  		<a href="Index.xhtml"><img src="#{request.contextPath}/images/logo.png" class="alignleft" height="150" alt="FLOURISH AND BLOTTS"></img></a>
 	      			  	</p:column>
 	      			  	<p:column >
 	      			  		<h1 style="text-align:center;">FLOURISH AND BLOTTS</h1> 
 	      			  	</p:column>
 	      			  	<p:column>
-	      			  		<img src="#{request.contextPath}/images/logo.png" class="alignright" height="150" alt="FLOURISH AND BLOTTS"></img>
+	      			  		<a href="Index.xhtml"><img src="#{request.contextPath}/images/logo.png" class="alignleft" height="150" alt="FLOURISH AND BLOTTS"></img></a>
 	      			  	</p:column>
 	      			 </p:panelGrid>
     			</p:layoutUnit>
@@ -35,10 +35,12 @@
 					<p:slideMenu style="width:200px; height:300px">
 				        <p:submenu label="Cliente" icon="pi pi-user">
 				            <p:menuitem value="Logar" action="Login.xhtml" icon="pi pi-sign-in" />
+				            <p:menuitem value="Buscar" action="BuscarCliente.xhtml"  icon="pi pi-refresh" />
 				            <p:menuitem value="Cadastrar" action="CadastroCliente.xhtml" icon="pi pi-user-plus" />
 				        </p:submenu>
 				        <p:submenu label="Livro" icon="pi pi-bookmark">
 				            <p:menuitem value="Buscar" action="BuscaLivro.xhtml" update="messages" ajax="false" icon="pi pi-search" />
+				            <p:menuitem value="Cadastrar Livro" action="CadastroLivro.xhtml" icon="pi pi-file" />
 				        </p:submenu>
 					</p:slideMenu>
 				</p:layoutUnit>

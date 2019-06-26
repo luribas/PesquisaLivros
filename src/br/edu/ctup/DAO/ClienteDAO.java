@@ -9,11 +9,11 @@ import javax.persistence.Entity;
 
 public interface ClienteDAO {
 
-	void salvar(Cliente cliente);
-	void excluir(Integer codigo);
-	Cliente editar(Integer codigo);
-	List<Cliente> listarTodos();
-	Cliente buscarPorNomeCliente (String nome);
-	Cliente autenticar(String login, String senha);
+	public void salvar(Cliente cliente);
+	public void excluir(Integer codigo);
+	public Cliente editar(Integer codigo);
+	public List<Cliente> listarTodos();
+	public Cliente buscarPorNomeCliente (String nome);
+	public Cliente autenticar(String login, String senha);
 	
 }
