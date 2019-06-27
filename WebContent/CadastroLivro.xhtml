@@ -7,12 +7,11 @@
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Cadastrar Livro</title>
-<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/arquivos/astronaut.png"/>
-</h:head>
+<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/feather_icon.jpg"/></h:head>
 <f:view>
 	<h:body>
 		<h:form>
-			<p:layout style="min-width:200px; min-height:1000px;">
+			<p:layout style="min-width:200px; min-height:700px;">
 				<p:layoutUnit position="north" size="150" maxSize="300" style="text-align:center;">
 					<h1>Fourish and Blotts</h1>
 				</p:layoutUnit>
@@ -35,10 +34,10 @@
 				
 				<!-- WEST -->	
 				<p:layoutUnit position="west" header="Menu" size="250" resizable="true" style="text-align:center;">
-					<p:slideMenu style="width:200px; height:300px">
+					<p:slideMenu style="width:200px; height:200px;">
 				        <p:submenu label="Cliente" icon="pi pi-user">
 				            <p:menuitem value="Logar" action="Login.xhtml" icon="pi pi-sign-in" />
-				            <p:menuitem value="Buscar" action="BuscarCliente.xhtml"  icon="pi pi-refresh" />
+				            <p:menuitem value="Buscar" action="BuscarCliente.xhtml"  icon="pi pi-search" />
 				            <p:menuitem value="Cadastrar" action="CadastroCliente.xhtml" icon="pi pi-user-plus" />
 				        </p:submenu>
 				        <p:submenu label="Livro" icon="pi pi-bookmark">
@@ -48,42 +47,29 @@
 				</p:layoutUnit>
 				
 				
-				<p:layoutUnit position="west" size="300" maxSize="300">
-				    <p:panelMenu style="width:290px">
-				        <p:submenu label="Clientes">
-				            <p:menuitem value="Login" action="Login.xhtml" icon="pi pi-save" />
-				            <p:menuitem value="Buscar" action="BuscarCliente.xhtml"  icon="pi pi-refresh" />
-				            <p:menuitem value="Cadastre-se" action="CadastroCliente.xhtml"  icon="pi pi-refresh" />
-				        </p:submenu>
-				        <p:separator />
-				        <p:submenu label="Livros" >
-				            <p:menuitem value="Buscar" action="BuscarLivro.xhtml" icon="pi pi-home" />
-				            <p:menuitem value="Cadastrar Livro" action="CadastroLivro.xhtml" icon="pi pi-file" />
-				        </p:submenu>
-				    </p:panelMenu>
-				</p:layoutUnit>
+			<!-- CENTER -->
 			
-				<p:layoutUnit position="center" size="500" maxSize="500">
-			    	<p:breadCrumb>
-					    <p:menuitem value="Categories" url="Index.xhtml" />
-					    <p:menuitem value="Livros" url="#" />
-					    <p:menuitem value="Cadastro de Livros" url="#" />
-					</p:breadCrumb>
-					<h:panelGrid style="margin-top:50px; margin-left:200px;">
-						<p:outputLabel value="Título: " />
-						<p:inputText value="#{livroController.livro.nomeLivro}"/>
-						<p:outputLabel value="Autor: " />
-						<p:inputText value="#{livroController.livro.nomeAutor}"/>
-						<p:outputLabel value="Preço: " />
-						<p:inputText value="#{livroController.livro.preco}" />
-						<p:outputLabel value="Páginas: " />
-						<p:inputText value="#{livroController.livro.numPaginas}" />
-						<p:outputLabel value="Estoque: " />
-						<p:inputText value="#{livroController.livro.estoqueInicial}" />
-						<p:commandButton value="Salvar" action="#{livroController.salvar}"/>
-					</h:panelGrid>
-				</p:layoutUnit>
-				
+			<p:layoutUnit position="center" size="300" maxSize="500">
+			   	<p:breadCrumb>
+				    <p:menuitem value="Categories" url="Index.xhtml" />
+				    <p:menuitem value="Livros" url="#" />
+				    <p:menuitem value="Cadastro de Livros" url="#" />
+				</p:breadCrumb>
+				<h:panelGrid style="margin-top:10px;" columns="2">
+					<p:outputLabel value="Título: " />
+					<p:inputText value="#{livroController.livro.nomeLivro}"/>
+					<p:outputLabel value="Autor: " />
+					<p:inputText value="#{livroController.livro.nomeAutor}"/>
+					<p:outputLabel value="Preço: " />
+					<p:inputText value="#{livroController.livro.preco}" />
+					<p:outputLabel value="Páginas: " />
+					<p:inputText value="#{livroController.livro.numPaginas}" />
+					<p:outputLabel value="Estoque: " />
+					<p:inputText value="#{livroController.livro.estoqueInicial}" />
+					<p:commandButton value="Salvar" action="#{livroController.salvar}"/>
+				</h:panelGrid>
+			</p:layoutUnit>
+			
 			<!-- SOUTH -->
 			  <p:layoutUnit position="south" size="100" resizable="true" collapsible="true"  style="text-align:center" >
 					<h5> <i>"where the shelves are stacked to the ceiling with books as large as paving stones bound in leather"</i> </h5>

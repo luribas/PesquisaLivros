@@ -13,6 +13,7 @@ public class LivroController {
 	private Livro livro = new Livro();
 	private List<Livro> listaLivros;
 	LivroDAOImpl livroDAOImpl = new LivroDAOImpl();
+	private List<Livro> listaPesquisaLivro;
 	
 	public LivroController() {
 		livro = new Livro();
@@ -20,7 +21,7 @@ public class LivroController {
 
 // salvar livro 
 	public void salvar() throws IOException {
-		livroDAOImpl.CadastrarLivro(livro);
+		livroDAOImpl.salvar(livro);
 		livro = new Livro();
 	}
 
@@ -36,10 +37,10 @@ public class LivroController {
 		livro = livroDAOImpl.editar(id);
 	}
 	
-// Listagem
+// Listagem total
 	public void listarTodos() {
 		LivroDAOImpl livroDAOImpl = new LivroDAOImpl();
-		listaLivros = livroDAOImpl.listarTodosLivros();
+		listaLivros = livroDAOImpl.listarTodos();
 	}
 
 	
@@ -53,13 +54,45 @@ public class LivroController {
 	
 	public List<Livro> getListaLivros() {
 		LivroDAOImpl livroDAOImpl = new LivroDAOImpl();
-		List<Livro> livros = livroDAOImpl.listarTodosLivros();
+		List<Livro> livros = livroDAOImpl.listarTodos();
 		for (Livro l : livros) {
 			System.out.println("Título: " + l.getNomeLivro());
 		}
-		return livroDAOImpl.listarTodosLivros();
+		return livroDAOImpl.listarTodos();
 	}
 	public void setListaLivros(List<Livro> listaLivros) {
 		this.listaLivros = listaLivros;
 	}
+
+	public List<Livro> getListaPesquisaLivro() {
+		return listaPesquisaLivro;
+	}
+
+	public void setListaPesquisaLivro(List<Livro> listaPesquisaLivro) {
+		this.listaPesquisaLivro = listaPesquisaLivro;
+	}
+	
+	// buscar + buscar por codigo
+	public void buscarLivro() throws IOException {
+		listaPesquisaLivro = livroDAOImpl.buscarLivro(livro);
+		if(!listaPesquisaLivro.isEmpty())
+		{
+			FacesContext.getCurrentInstance().getExternalContext().redirect("BuscarLivro.xhtml");
+		} else {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("BuscarLivroErro.xhtml");
+		}
+	}
+	
+	// BUSCAR POR ID
+	public void buscarLivroCodigo() throws IOException {
+		listaPesquisaLivro = livroDAOImpl.buscarLivroCodigo(livro);
+		if(listaPesquisaLivro != null)
+		{
+			FacesContext.getCurrentInstance().getExternalContext().redirect("BuscarLivro.xhtml");
+		} else {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("BuscarLivroErro.xhtml");
+		}
+	
+}
+	
 }

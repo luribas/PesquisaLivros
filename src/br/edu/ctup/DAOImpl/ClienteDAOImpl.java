@@ -14,13 +14,35 @@ public class ClienteDAOImpl extends DAO implements ClienteDAO {
 	Cliente cliente = new Cliente();
 	EntityManager em = getEntityManager();
 	
+//	@Override
+//	public void salvar(Cliente cliente) {
+//		em.getTransaction().begin(); // abre a conexão
+//		em.persist(cliente);
+//		em.getTransaction().commit();
+//				
+//		}
+	
+	//SALVAR NOVO CLIENTE 
 	@Override
 	public void salvar(Cliente cliente) {
-		em.getTransaction().begin(); // abre a conexão
-		em.persist(cliente);
-		em.getTransaction().commit();
-				
+		EntityManager em = getEntityManager();
+		try {
+			if(cliente.getCodigo() == null) {
+				em.getTransaction().begin();
+				em.persist(cliente);
+				em.getTransaction().commit();	
+			} else {
+				em.getTransaction().begin();
+				em.merge(cliente);
+				em.getTransaction().commit();
+			}
+		} catch(Exception e) {
+			e.getStackTrace();
+			em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
+	}
 		
 	@Override
 	public void excluir(Integer codigo) {
@@ -29,7 +51,7 @@ public class ClienteDAOImpl extends DAO implements ClienteDAO {
 			em.getTransaction().begin();    //inicia o processo de transacao
 			Cliente cliente = em.find(Cliente.class, codigo); 	//faz a persistencia
 			em.remove(cliente);
-			em.getTransaction().commit();	//manda bala para o BD
+			em.getTransaction().commit();	//manda para o BD
 			
 		}catch (Exception e) {
 			//em caso de erro entra aqui e cancela
@@ -37,6 +59,7 @@ public class ClienteDAOImpl extends DAO implements ClienteDAO {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Cliente> listarTodos() {
 		EntityManager em= getEntityManager();
@@ -83,6 +106,18 @@ public class ClienteDAOImpl extends DAO implements ClienteDAO {
 	public Cliente editar(Integer codigo) {
 		em = getEntityManager();
 		return em.find(Cliente.class, codigo);
+	}
+
+	@Override
+	public List<Cliente> buscarCliente(Cliente cliente) {
+		em = getEntityManager();
+		try {
+			Query query = em.createQuery("select object(c) from Cliente as c where lower(c.nome) like :nome");
+			query.setParameter("nome", "%" + cliente.getNome().toLowerCase() + "%");
+			return query.getResultList();
+		} catch(Exception nre) {
+			return null;
+		}
 	}
 
 

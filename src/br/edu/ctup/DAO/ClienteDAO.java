@@ -15,5 +15,6 @@ public interface ClienteDAO {
 	public List<Cliente> listarTodos();
 	public Cliente buscarPorNomeCliente (String nome);
 	public Cliente autenticar(String login, String senha);
+	List<Cliente> buscarCliente(Cliente cliente);
 	
 }

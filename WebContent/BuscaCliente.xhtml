@@ -1,15 +1,119 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<head>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<!-- permite alterar e excluir cliente -->
-<body>
-
-</body>
+<title>Buscar Clientes</title>
+<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/feather_icon.jpg"/></h:head>
+<h:body>
+	<h:form name="form1" id="form1" action="AlterarCliente.xhtml" method="post">
+		<p:layout style="min-width:1000px; min-height:600px;">
+		
+			<!-- NORTH -->		
+			<p:layoutUnit position="north" size="150" resizable="true" closable="true" collapsible="true">
+	       		<p:panelGrid columns="3" layout="grid">
+	      		  
+	      		  	<p:column>
+	      		  		<a href="Index.xhtml"><img src="#{request.contextPath}/images/logo.png" class="alignleft" height="150" alt="FLOURISH AND BLOTTS"></img></a>
+	      		  	</p:column>
+	      		  	<p:column >
+	      		  		<h1 style="text-align:center;">FLOURISH AND BLOTTS</h1> 
+	      		  	</p:column>
+	      		  	<p:column>
+	      		  		<a href="Index.xhtml"><img src="#{request.contextPath}/images/logo.png" class="alignleft" height="150" alt="FLOURISH AND BLOTTS"></img></a>
+	      		  	</p:column>
+	      		 </p:panelGrid>
+    		</p:layoutUnit>
+			
+			<!-- WEST -->
+			<p:layoutUnit position="west" header="Menu" size="250" resizable="true" style="text-align:center;">
+				<p:slideMenu style="width:200px; height:300px">
+					<p:submenu label="Cliente" icon="pi pi-user">
+						<p:menuitem value="Logar" action="Login.xhtml" icon="pi pi-sign-in" />
+				        <p:menuitem value="Buscar" action="BuscarCliente.xhtml"  icon="pi pi-refresh" />
+				    </p:submenu>
+					<p:submenu label="Livro" icon="pi pi-bookmark">
+						<p:menuitem value="Buscar" action="BuscaLivro.xhtml" update="messages" ajax="false" icon="pi pi-search" />
+						<p:menuitem value="Cadastrar Livro" action="CadastroLivro.xhtml" icon="pi pi-file" />
+					</p:submenu>
+				</p:slideMenu>
+			</p:layoutUnit>
+				
+		    
+		    <!-- CENTER -->
+			<p:layoutUnit position="center" size="200" resizable="true" closable="true" collapsible="true" effect="drop">
+		        <p:breadCrumb>
+				    <p:menuitem value="Categories" url="#" />
+				    <p:menuitem value="Clientes" url="#" />
+				    <p:menuitem value="Buscar" url="#" />
+				</p:breadCrumb>
+			    <h:panelGrid style="margin-top:25px;" columns="2">
+					<p:outputLabel value="Nome: "/>
+					<p:inputText value="#{clienteController.cliente.nome}" />
+					<p:commandButton style="margin-top:10px;" value="Buscar" action="#{clienteController.buscarCliente}"/>
+				</h:panelGrid>
+				
+				<h4 style="text-align:left;">Resultados:</h4>
+				<p:dataTable value="#{clienteController.listaPesquisa}" var="c"
+					border="2" rendered="#{not empty clienteController.listaPesquisa}" style="text-align:center;">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#"/>
+						</f:facet>
+						<h:outputLabel id="id" name="id" value="#{c.id}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Nome"/>
+						</f:facet>
+						<h:outputLabel id="nome" value="#{c.nome}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Login"/>
+						</f:facet>
+						<p:outputLabel id="login" value="#{c.login}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="RG"/>
+						</f:facet>
+						<p:outputLabel id="rg" value="#{c.rg}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="CPF"/>
+						</f:facet>
+						<p:outputLabel id="cpf" value="#{c.cpf}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Excluir"/>
+						</f:facet>
+						<h:commandLink value="Excluir" action="#{clienteController.excluir}">
+							<f:param name="id" value="#{c.id}"/>
+						</h:commandLink>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Editar"/>
+						</f:facet>
+						<h:commandLink value="Editar" action="AlterarCliente.xhtml">
+							<f:param name="id" value="#{c.id}" action="AlterarCliente.xhtml"/>
+						</h:commandLink>
+					</p:column>
+				</p:dataTable>
+		    </p:layoutUnit>
+		    
+		    <!-- SOUTH -->
+			<p:layoutUnit position="south" size="100" resizable="true" collapsible="true"  style="text-align:center" >
+				<h5> <i>"where the shelves are stacked to the ceiling with books as large as paving stones bound in leather"</i> </h5>
+			</p:layoutUnit>
+		    
+		</p:layout>
+	</h:form>
+</h:body>
 </html>

@@ -17,7 +17,7 @@ public class LivroDAOImpl extends DAO implements LivroDAO{
 
 // salvar livro novo
 	@Override
-	public void CadastrarLivro(Livro livro) {
+	public void salvar(Livro livro) {
 		EntityManager em = getEntityManager();
 		try {
 				if(livro.getCodigo() == null) {
@@ -36,17 +36,8 @@ public class LivroDAOImpl extends DAO implements LivroDAO{
 			em.close();
 		}
 	}
-
-// listar livros cadastrados
 	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Livro> listarTodosLivros() {
-		Query q = em.createQuery("select object(l) from Livro as l");
-		return q.getResultList();
-	}
-
-// BUSCAS!
+// Buscas!
 	@Override
 	public List<Livro> buscarPorNomelivro(String nome) {
 		em = getEntityManager();
@@ -55,17 +46,6 @@ public class LivroDAOImpl extends DAO implements LivroDAO{
 		livro = (Livro) q.getSingleResult();
 		return q.getResultList();
 	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Livro> buscarPorCodigolivro(Integer codigo) {
-		em = getEntityManager();
-		Query q = em.createQuery("from Livro where codigo=:codigo");
-		q.setParameter("codigo", codigo);
-		livro = (Livro) q.getSingleResult();
-		return q.getResultList();
-	}
-	
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -95,5 +75,34 @@ public class LivroDAOImpl extends DAO implements LivroDAO{
 		return em.find(Livro.class, codigo);
 	}
 
-	
+// lista todos
+	@Override
+	public List<Livro> listarTodos() {
+		Query q = em.createQuery("select object(l) from Livro as l");
+		return q.getResultList();
+	}
+
+	@Override
+	public List<Livro> buscarLivroCodigo(Livro livro) {
+		em = getEntityManager();
+		try {
+			Query query = em.createQuery("select object(l) from Livro as l where l.id like :id");
+			query.setParameter("id", livro.getCodigo());
+			return query.getResultList();
+		} catch(Exception nre) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<Livro> buscarLivro(Livro livro) {
+		em = getEntityManager();
+		try {
+			Query query = em.createQuery("select object(l) from Livro as l where lower(l.titulo) like :titulo");
+			query.setParameter("titulo", "%" + livro.getNomeLivro().toLowerCase() + "%");
+			return query.getResultList();
+		} catch(Exception nre) {
+			return null;
+		}
+	}
 }

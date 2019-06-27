@@ -12,6 +12,7 @@ public class ClienteController {
 
 	public Cliente cliente = new Cliente();
 	private List<Cliente> listaClientes;
+	private List<Cliente> listaPesquisa;
 	private ClienteDAOImpl clienteDAOImpl = new ClienteDAOImpl();
 	
 	public ClienteController() {
@@ -22,14 +23,22 @@ public class ClienteController {
 		cliente = new Cliente();
 	}
 	
-//	Salvar
+	//lista de pesquisa de clientes
+	public List<Cliente> getListaPesquisa() {
+		return listaPesquisa;
+	}
+	public void setListaPesquisa(List<Cliente> listaPesquisa) {
+		this.listaPesquisa = listaPesquisa;
+	}
 	
+	//	Salvar
 	public void salvar() throws IOException {
 		clienteDAOImpl.salvar(cliente);
 		cliente = new Cliente();
 		FacesContext.getCurrentInstance().getExternalContext().redirect("Login.xhtml");
 	}
 		
+	//listar
 	public void listarTodos() {
 		ClienteDAOImpl clienteDAOimpl = new ClienteDAOImpl();
 		listaClientes = clienteDAOimpl.listarTodos();
@@ -87,6 +96,18 @@ public class ClienteController {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("ClienteLogado.xhtml");
 		} else {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("Erro.xhtml");
+		}
+	}
+	
+	// buscar
+	
+	public void buscarCliente() throws IOException {
+		listaPesquisa = clienteDAOImpl.buscarCliente(cliente);
+		if(!listaPesquisa.isEmpty())
+		{
+			FacesContext.getCurrentInstance().getExternalContext().redirect("BuscarCliente.xhtml");
+		} else {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("BuscarClienteErro.xhtml");
 		}
 	}
 }

@@ -1,16 +1,128 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<head>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<body>
-
-pagina pesquisa de livro estruturar
-<!--  permite alterar e excluir livro -->
-</body>
+<title>Buscar Clientes</title>
+<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/images/feather_icon.jpg"/></h:head>
+<h:body>
+	<h:form name="form1" id="form1" action="AlterarCliente.xhtml" method="post">
+		<p:layout style="min-width:1000px; min-height:600px;">
+		
+			<!-- NORTH -->		
+			<p:layoutUnit position="north" size="150" resizable="true" closable="true" collapsible="true">
+	       		<p:panelGrid columns="3" layout="grid">
+	      		  
+	      		  	<p:column>
+	      		  		<a href="Index.xhtml"><img src="#{request.contextPath}/images/logo.png" class="alignleft" height="150" alt="FLOURISH AND BLOTTS"></img></a>
+	      		  	</p:column>
+	      		  	<p:column >
+	      		  		<h1 style="text-align:center;">FLOURISH AND BLOTTS</h1> 
+	      		  	</p:column>
+	      		  	<p:column>
+	      		  		<a href="Index.xhtml"><img src="#{request.contextPath}/images/logo.png" class="alignleft" height="150" alt="FLOURISH AND BLOTTS"></img></a>
+	      		  	</p:column>
+	      		 </p:panelGrid>
+    		</p:layoutUnit>
+			
+			<!-- WEST -->
+			<p:layoutUnit position="west" header="Menu" size="250" resizable="true" style="text-align:center;">
+				<p:slideMenu style="width:200px; height:300px">
+					<p:submenu label="Cliente" icon="pi pi-user">
+						<p:menuitem value="Logar" action="Login.xhtml" icon="pi pi-sign-in" />
+				        <p:menuitem value="Buscar" action="BuscarCliente.xhtml"  icon="pi pi-refresh" />
+				    </p:submenu>
+					<p:submenu label="Livro" icon="pi pi-bookmark">
+						<p:menuitem value="Buscar" action="BuscaLivro.xhtml" update="messages" ajax="false" icon="pi pi-search" />
+						<p:menuitem value="Cadastrar Livro" action="CadastroLivro.xhtml" icon="pi pi-file" />
+					</p:submenu>
+				</p:slideMenu>
+			</p:layoutUnit>
+				
+		    
+		    <!-- CENTER -->
+			<p:layoutUnit position="center" size="200" resizable="true" closable="true" collapsible="true" effect="drop">
+		         <p:breadCrumb>
+				    <p:menuitem value="Categories" url="Index.xhtml" />
+				    <p:menuitem value="Livros" url="#" />
+				    <p:menuitem value="Buscar" url="#" />
+				</p:breadCrumb>
+			    <h:panelGrid style="margin-top:50px; margin-left:20px;" columns="2">
+						<p:outputLabel value="Título: "/>
+						<p:inputText value="#{livroController.livro.nomeLivro}" />
+						<p:commandButton value="Buscar" action="#{livroController.buscarLivro}"/><br></br>
+						<p:outputLabel value="Código:"/>
+						<p:inputText value="#{livroController.livro.codigo}" />
+						<p:commandButton value="Buscar" action="#{livroController.buscarLivroCodigo}"/>
+				</h:panelGrid>
+				
+				<h4 style="text-align:center;">Resultados:</h4>
+				<p:dataTable value="#{livroController.listaPesquisaLivro}" var="l"
+					border="2" rendered="#{not empty livroController.listaPesquisaLivro}">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="ID"></h:outputText>
+						</f:facet>
+						<h:outputLabel value="#{l.codigo}"></h:outputLabel>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Titulo"></h:outputText>
+						</f:facet>
+						<h:outputLabel value="#{l.nomeLivro}"></h:outputLabel>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Autor"/>
+						</f:facet>
+						<p:outputLabel value="#{l.nomeAutor}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Preco"/>
+						</f:facet>
+						<p:outputLabel value="#{l.preco}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Páginas"/>
+						</f:facet>
+						<p:outputLabel value="#{l.numPaginas}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Estoque"/>
+						</f:facet>
+						<p:outputLabel value="#{l.estoqueInicial}"/>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Excluir"/>
+						</f:facet>
+						<h:commandLink value="Excluir" action="#{livroController.excluir}">
+							<f:param name="id" value="#{l.id}"/>
+						</h:commandLink>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Alterar"/>
+						</f:facet>
+						<h:commandLink value="Alterar" action="AlterarLivro.xhtml">
+							<f:param name="id" value="#{l.id}"/>
+						</h:commandLink>
+					</p:column>
+				</p:dataTable>
+		    </p:layoutUnit>
+		    
+		    <!-- SOUTH -->
+			<p:layoutUnit position="south" size="100" resizable="true" collapsible="true"  style="text-align:center" >
+				<h5> <i>"where the shelves are stacked to the ceiling with books as large as paving stones bound in leather"</i> </h5>
+			</p:layoutUnit>
+		    
+		</p:layout>
+	</h:form>
+</h:body>
 </html>
