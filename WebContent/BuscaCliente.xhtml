@@ -57,13 +57,12 @@
 				</h:panelGrid>
 				
 				<h4 style="text-align:left;">Resultados:</h4>
-				<p:dataTable value="#{clienteController.listaPesquisa}" var="c"
-					border="2" rendered="#{not empty clienteController.listaPesquisa}" style="text-align:center;">
+				<p:dataTable value="#{clienteController.listaPesquisa}" var="c" border="2" rendered="#{not empty clienteController.listaPesquisa}" style="text-align:center;">
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="#"/>
 						</f:facet>
-						<h:outputLabel id="id" name="id" value="#{c.id}"/>
+						<h:outputLabel id="codigo" name="codigo" value="#{c.codigo}"/>
 					</p:column>
 					<p:column>
 						<f:facet name="header">
@@ -94,15 +93,15 @@
 							<h:outputText value="Excluir"/>
 						</f:facet>
 						<h:commandLink value="Excluir" action="#{clienteController.excluir}">
-							<f:param name="id" value="#{c.id}"/>
+							<f:param name="codigo" value="#{c.codigo}"/>
 						</h:commandLink>
 					</p:column>
 					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Editar"/>
 						</f:facet>
-						<h:commandLink value="Editar" action="AlterarCliente.xhtml">
-							<f:param name="id" value="#{c.id}" action="AlterarCliente.xhtml"/>
+						<h:commandLink value="Editar" action="EditarCliente.xhtml">
+							<f:param name="id" value="#{c.codigo}" action="EditarCliente.xhtml"/>
 						</h:commandLink>
 					</p:column>
 				</p:dataTable>

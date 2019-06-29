@@ -23,19 +23,20 @@ public class ClienteDAOImpl extends DAO implements ClienteDAO {
 //		}
 	
 	//SALVAR NOVO CLIENTE 
+
 	@Override
 	public void salvar(Cliente cliente) {
 		EntityManager em = getEntityManager();
 		try {
+			em.getTransaction().begin();
+			
 			if(cliente.getCodigo() == null) {
-				em.getTransaction().begin();
 				em.persist(cliente);
-				em.getTransaction().commit();	
 			} else {
-				em.getTransaction().begin();
 				em.merge(cliente);
-				em.getTransaction().commit();
 			}
+			
+			em.getTransaction().commit();
 		} catch(Exception e) {
 			e.getStackTrace();
 			em.getTransaction().rollback();
@@ -108,6 +109,7 @@ public class ClienteDAOImpl extends DAO implements ClienteDAO {
 		return em.find(Cliente.class, codigo);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Cliente> buscarCliente(Cliente cliente) {
 		em = getEntityManager();

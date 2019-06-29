@@ -1,6 +1,7 @@
 package br.edu.ctup.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
@@ -105,9 +106,9 @@ public class ClienteController {
 		listaPesquisa = clienteDAOImpl.buscarCliente(cliente);
 		if(!listaPesquisa.isEmpty())
 		{
-			FacesContext.getCurrentInstance().getExternalContext().redirect("BuscarCliente.xhtml");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("BuscaCliente.xhtml");
 		} else {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("BuscarClienteErro.xhtml");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("Erro.xhtml");
 		}
 	}
 }
