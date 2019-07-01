@@ -14,7 +14,7 @@ public class ClienteController {
 	public Cliente cliente = new Cliente();
 	private List<Cliente> listaClientes;
 	private List<Cliente> listaPesquisa;
-	private ClienteDAOImpl clienteDAOImpl = new ClienteDAOImpl();
+	ClienteDAOImpl clienteDAOImpl = new ClienteDAOImpl();
 	
 	public ClienteController() {
 		cliente = new Cliente();

@@ -18,7 +18,8 @@
 			<!-- dados da conexao -->
 			<property name="javax.persistence.jdbc.driver"
 				value="org.hsqldb.jdbcDriver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:C/Users/Lala/Documents/Lu/PROJETO_ARQUIVOS_2019/hsqldb-2.4.1/hsqldb/data/Projeto"/>
+			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:C/Users/Lala/Documents/Lu/PROJETO_ARQUIVOS_2019/hsqldb-2.4.1/hsqldb/data/Projeto"/>  -->
+			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:C:/Users/Aluno/Desktop/PROJETO_ARQUIVOS_2019/hsqldb-2.4.1/hsqldb/data/Projeo"/>
 			<property name="javax.persistence.jdbc.user" value="SA" />
 			<property name="javax.persistence.jdbc.password" value="" />
 

@@ -5,13 +5,13 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 	<managed-bean>
-		<managed-bean-name>livroController</managed-bean-name>
-		<managed-bean-class>br.edu.ctup.controller.LivroController</managed-bean-class>
+		<managed-bean-name>clienteController</managed-bean-name>
+		<managed-bean-class>br.edu.ctup.controller.ClienteController</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>clienteController</managed-bean-name>
-		<managed-bean-class>br.edu.ctup.controller.ClienteController</managed-bean-class>
+		<managed-bean-name>livroController</managed-bean-name>
+		<managed-bean-class>br.edu.ctup.controller.LivroController</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 
