@@ -61,7 +61,43 @@
 						
 						<p:commandButton value="Entrar" action="#{clienteController.autenticarCliente}"/>
 					</p:panelGrid>
-			    </p:layoutUnit>
+			    
+			    	<h4><b>Clientes Cadastrados</b></h4>
+					
+					<h:dataTable value="#{clienteController.listaClientes}" var="c" border="3" rendered="#{not empty clienteController.listaClientes}">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Nome"></h:outputText>
+							</f:facet>
+							<h:outputLabel value="#{c.nome}"></h:outputLabel>
+						</h:column>
+					
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Login"></h:outputText>
+							</f:facet>
+							<h:outputLabel value="#{c.login}"></h:outputLabel>
+						</h:column>
+					
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Alterar"></h:outputText>
+							</f:facet>
+							<h:commandLink value="#{c.nome}" action="#{clienteController.editar}">
+								<f:param name="codigo" value="#{c.codigo}"></f:param>
+							</h:commandLink>
+						</h:column>
+					
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Excluir"></h:outputText>
+							</f:facet>
+							<h:commandLink value="X" action="#{clienteController.excluir}">
+								<f:param name="codigo" value="#{c.codigo}"></f:param>
+							</h:commandLink>
+						</h:column>
+					</h:dataTable>
+				</p:layoutUnit>
 			    
 			    <!-- SOUTH -->
 			  <p:layoutUnit position="south" size="100" resizable="true" collapsible="true"  style="text-align:center" >

@@ -72,6 +72,7 @@
 											
 					<!--  Lista de cadastrados -->
 					<h4><b>Clientes Cadastrados</b></h4>
+					
 					<h:dataTable value="#{clienteController.listaClientes}" var="c" border="3" rendered="#{not empty clienteController.listaClientes}">
 						<h:column>
 							<f:facet name="header">
@@ -79,26 +80,29 @@
 							</f:facet>
 							<h:outputLabel value="#{c.nome}"></h:outputLabel>
 						</h:column>
+					
 						<h:column>
 							<f:facet name="header">
 								<h:outputText value="Login"></h:outputText>
 							</f:facet>
 							<h:outputLabel value="#{c.login}"></h:outputLabel>
 						</h:column>
+					
 						<h:column>
 							<f:facet name="header">
 								<h:outputText value="Alterar"></h:outputText>
 							</f:facet>
 							<h:commandLink value="#{c.nome}" action="#{clienteController.editar}">
-								<f:param name="id" value="#{c.codigo}"></f:param>
+								<f:param name="codigo" value="#{c.codigo}"></f:param>
 							</h:commandLink>
 						</h:column>
+					
 						<h:column>
 							<f:facet name="header">
 								<h:outputText value="Excluir"></h:outputText>
 							</f:facet>
 							<h:commandLink value="X" action="#{clienteController.excluir}">
-								<f:param name="id" value="#{c.codigo}"></f:param>
+								<f:param name="codigo" value="#{c.codigo}"></f:param>
 							</h:commandLink>
 						</h:column>
 					</h:dataTable>
