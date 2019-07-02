@@ -67,14 +67,42 @@
 					<p:outputLabel value="Estoque: " />
 					<p:inputText value="#{livroController.livro.estoqueInicial}" />
 					<p:commandButton value="Salvar" action="#{livroController.salvar}"/>
-				</h:panelGrid>
-			</p:layoutUnit>
+				</h:panelGrid>			
+			
+				<h4><b>Livros Cadastrados</b></h4>
+					
+					<h:dataTable value="#{livroController.listaLivros}" var="l" border="3" rendered="#{not empty livrosController.listaLivros}">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Titulo"></h:outputText>
+							</f:facet>
+							<h:outputLabel value="#{livros.nomeLivro}"></h:outputLabel>
+						</h:column>
+										
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Alterar"></h:outputText>
+							</f:facet>
+							<h:commandLink value="#{l.nomeLivro}" action="#{livroController.editar}">
+								<f:param name="codigo" value="#{l.codigo}"></f:param>
+							</h:commandLink>
+						</h:column>
+					
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Excluir"></h:outputText>
+							</f:facet>
+							<h:commandLink value="X" action="#{livroController.excluir}">
+								<f:param name="codigo" value="#{c.codigo}"></f:param>
+							</h:commandLink>
+						</h:column>
+					</h:dataTable>
+				</p:layoutUnit>
 			
 			<!-- SOUTH -->
 			  <p:layoutUnit position="south" size="100" resizable="true" collapsible="true"  style="text-align:center" >
 					<h5> <i>"where the shelves are stacked to the ceiling with books as large as paving stones bound in leather"</i> </h5>
-			 </p:layoutUnit>
-			    
+			 </p:layoutUnit>			    
 		
 			</p:layout>
 		</h:form>

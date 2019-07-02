@@ -14,5 +14,10 @@
 		<managed-bean-class>br.edu.ctup.controller.LivroController</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>controllerJavaWEB</managed-bean-name>
+		<managed-bean-class>br.edu.ctup.controller.ControllerJavaWEB</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>

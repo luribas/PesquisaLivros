@@ -86,8 +86,8 @@ public class LivroDAOImpl extends DAO implements LivroDAO{
 	public List<Livro> buscarLivroCodigo(Livro livro) {
 		em = getEntityManager();
 		try {
-			Query query = em.createQuery("select object(l) from Livro as l where l.id like :id");
-			query.setParameter("id", livro.getCodigo());
+			Query query = em.createQuery("select object(l) from Livro as l where l.codigo like :codigo");
+			query.setParameter("codigo", livro.getCodigo());
 			return query.getResultList();
 		} catch(Exception nre) {
 			return null;
@@ -97,12 +97,8 @@ public class LivroDAOImpl extends DAO implements LivroDAO{
 	@Override
 	public List<Livro> buscarLivro(Livro livro) {
 		em = getEntityManager();
-		try {
-			Query query = em.createQuery("select object(l) from Livro as l where lower(l.titulo) like :titulo");
-			query.setParameter("titulo", "%" + livro.getNomeLivro().toLowerCase() + "%");
-			return query.getResultList();
-		} catch(Exception nre) {
-			return null;
-		}
+		Query query = em.createQuery("select object(l) from Livro as l where lower(l.nomeLivro) like :nomeLivro");
+		query.setParameter("nomeLivro", "%" + livro.getNomeLivro().toLowerCase() + "%");
+		return query.getResultList();
 	}
 }

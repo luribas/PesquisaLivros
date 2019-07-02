@@ -33,7 +33,7 @@
       			  		<h1 style="text-align:center;">FLOURISH AND BLOTTS</h1> 
       			  	</p:column>
       			  	<p:column>
-      			  		<img src="#{request.contextPath}/images/logo.png" class="alignright" height="150" alt="FLOURISH AND BLOTTS"></img>
+      			  		<img src="#{request.contextPath}/images/logo.png" style="position: right;" class="alignright" height="150" alt="FLOURISH AND BLOTTS"></img>
       			  	</p:column>
       			 </p:panelGrid>
     		</p:layoutUnit>
@@ -41,7 +41,10 @@
 			<!-- WEST -->
 			<p:layoutUnit position="west" class="myBG" header="Menu" size="250" resizable="true" style="text-align:center;">
 				<p:slideMenu style="width:200px; height:150px;" class="myMenu">
-			        <p:submenu label="Cliente" icon="pi pi-user">
+					 <p:submenu label="JavaWEB" icon="pi pi-user">
+				            <p:menuitem value="Cadastrar" action="CadastroJavaWEB.xhtml" icon="pi pi-user-plus" />
+				     </p:submenu>
+			        <p:submenu label="Cliente" icon="pi pi-user">        
 			            <p:menuitem value="Logar" action="Login.xhtml" icon="pi pi-sign-in" />
 			            <p:menuitem value="Buscar" action="BuscaCliente.xhtml"  icon="pi pi-search" />
 			            <p:menuitem value="Cadastrar" action="CadastroCliente.xhtml" icon="pi pi-user-plus" />
@@ -55,7 +58,7 @@
 			
 			<!-- EAST/CENTER -->
 			<p:layoutUnit position="center" size="200" resizable="true" closable="true" collapsible="true" effect="drop">
-				<h:outputText value="adicionar conteúdo" />
+					<img src="#{request.contextPath}/images/fb.jpg" class="alignright" height="350" alt="WELCOME TO FLOURISH AND BLOTTS"/>
 			</p:layoutUnit>
 			
 			<!-- SOUTH -->

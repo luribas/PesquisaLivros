@@ -77,9 +77,9 @@ public class LivroController {
 		listaPesquisaLivro = livroDAOImpl.buscarLivro(livro);
 		if(!listaPesquisaLivro.isEmpty())
 		{
-			FacesContext.getCurrentInstance().getExternalContext().redirect("BuscarLivro.xhtml");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("BuscaLivro.xhtml");
 		} else {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("BuscarLivroErro.xhtml");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("Erro.xhtml");
 		}
 	}
 	

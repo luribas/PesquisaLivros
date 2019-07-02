@@ -7,6 +7,7 @@ import java.util.List;
 import javax.faces.context.FacesContext;
 
 import br.edu.ctup.DAOImpl.ClienteDAOImpl;
+import br.edu.ctup.DAOImpl.JavaWEBDAOImpl;
 import br.edu.ctup.bean.Cliente;
 
 public class ClienteController {
@@ -41,8 +42,8 @@ public class ClienteController {
 		
 	//listar
 	public void listarTodos() {
-		ClienteDAOImpl clienteDAOimpl = new ClienteDAOImpl();
-		listaClientes = clienteDAOimpl.listarTodos();
+		ClienteDAOImpl clienteDAOImpl = new ClienteDAOImpl();
+		listaClientes = clienteDAOImpl.listarTodos();
 			
 	}
 	
@@ -64,6 +65,10 @@ public class ClienteController {
 		}
 
 	public List<Cliente> getListaClientes() {
+		ClienteDAOImpl clienteDAOIMpl = new ClienteDAOImpl();
+		listaClientes = clienteDAOImpl.listarTodos();
+		
+
 		return listaClientes;
 		}
 
